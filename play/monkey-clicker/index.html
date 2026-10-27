@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Monkey Clicker</title>
+  <script type="module" crossorigin src="./assets/index-D_3rx_pw.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-7c2i5nBM.css">
+</head>
+<body class="intro no-ups">
+  <div id="app">
+    <header id="hud">
+      <div class="brand">Monkey<br>Clicker</div>
+      <div class="stat"><span class="k">Money</span><b id="money">$0</b></div>
+      <div class="stat"><span class="k">Words / sec</span><b id="speed">0</b></div>
+      <div class="book">
+        <div class="book-line"><span id="bookTitle">Shakespeare's Epitaph</span> <span class="pg">page <b id="pageNo">1</b> / <span id="pageCount">1</span></span></div>
+        <div class="bar"><i id="bookBar"></i></div>
+      </div>
+      <div id="boosts" class="boosts"></div>
+      <button id="house" class="pill house" type="button" hidden>New house</button>
+      <button id="upsBtn" class="pill" type="button">Upgrades <span id="upsBadge" class="badge" hidden>0</span></button>
+      <button id="mute" class="pill icon" type="button" aria-label="Sound">Sound on</button>
+      <button id="privacy" class="pill small" type="button">Privacy</button>
+    </header>
+
+    <section id="desk" aria-label="Your typewriter">
+      <div id="paper" class="paper" role="button" tabindex="0" aria-label="The page being typed">
+        <div class="paper-head"><span id="pageHead">Shakespeare's Epitaph · page 1</span><span id="copy"></span></div>
+        <div id="clip" class="lines-clip"><div id="lines" class="lines"></div></div>
+        <div class="pbar"><i><u id="pageBar"></u></i><span id="pagePay">$15</span></div>
+        <div id="stamp" class="stamp" hidden>PUBLISHED</div>
+        <div id="flipper" class="flipper" hidden></div>
+      </div>
+      <div id="machine" class="machine">
+        <div id="carriage" class="carriage"><i class="knob"></i><i class="platen"></i><i class="knob"></i></div>
+        <div class="body">
+          <div id="keys" class="keys"></div>
+          <button id="type" class="space" type="button">TYPE</button>
+        </div>
+      </div>
+      <div id="hint" class="hint" hidden><span class="mouse">Click TYPE or press any key</span><span class="touch">Tap TYPE</span></div>
+      <button id="parcel" class="parcel" type="button" hidden><i class="crate"></i><span>Parcel <b id="parcelN">×1</b></span></button>
+      <div id="pops" class="pops"></div>
+    </section>
+
+    <section id="levels" aria-label="Levels"></section>
+
+    <aside id="ups" aria-label="Upgrades">
+      <div class="ups-head"><h2>Upgrades</h2><span id="upsCount" class="muted"></span><button id="upsClose" class="pill" type="button">Close</button></div>
+      <div id="upList" class="up-grid"></div>
+      <p id="upNext" class="muted"></p>
+      <div id="houseCard" class="house-card"></div>
+    </aside>
+  </div>
+  <div id="modal" class="modal" hidden>
+    <div class="box">
+      <h2>Found a new publishing house?</h2>
+      <p>Your monkeys, desks, levels, upgrades and money start over. The fame of your publishing houses stays:</p>
+      <p class="gain" id="modalGain">+3 fame: everything types +30% faster</p>
+      <p class="spend" id="metaLeft"></p>
+      <div id="metaShop" class="meta-shop"></div>
+      <div class="row"><button id="modalNo" class="pill" type="button">Not yet</button><button id="modalYes" class="buy wide" type="button"><b>Found it</b></button></div>
+    </div>
+  </div>
+  <button id="banana" class="banana" type="button" hidden aria-label="Golden banana"><i class="ring"></i><i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i><i class="spark s4"></i></button>
+  <div id="reveal" class="reveal" hidden><div class="rbox"><i class="crate big"></i><div class="rtier"></div><div class="rtext"></div></div></div>
+  <div id="privacyBox" class="modal" hidden>
+    <div class="box small">
+      <p>This game sends anonymous gameplay stats (no account, no name, a random id per visit) to improve it. Your progress is saved by CrazyGames, or in this browser.</p>
+      <div class="row"><button id="privacyOk" class="buy wide" type="button"><b>OK</b></button></div>
+    </div>
+  </div>
+  <div id="toast" class="toast" hidden></div>
+</body>
+</html>
