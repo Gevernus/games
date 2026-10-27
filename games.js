@@ -8,13 +8,13 @@ window.GAMES = [
     "title": "How to Become a Black Hole",
     "pitch": "You are a speck of cosmic dust. Pull in matter, grow and live through a star's life all the way to a black hole.",
     "author": "Artem",
-    "status": "jam",
-    "statusText": "Ludum Dare 60",
+    "status": "soon",
+    "statusText": "Coming to CrazyGames",
     "date": "2026-10-21",
     "cover": "covers/stardust.webp",
     "play": "play/stardust/",
     "links": [
-      { "label": "Ludum Dare page", "url": "https://ldjam.com/events/ludum-dare/60/stardust" }
+      { "label": "Ludum Dare 60 jam version", "url": "https://ldjam.com/events/ludum-dare/60/stardust" }
     ]
   },
   {
