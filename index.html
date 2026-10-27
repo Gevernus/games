@@ -336,6 +336,7 @@
 </nav>
 
 <script src="games.js"></script>
+<script src="analytics.js"></script>
 <script>
   const GOAL = 25;
   const START = new Date('2026-10-19T00:00:00');
@@ -465,7 +466,7 @@
   floorsEl.append(bottom);
   stops.push({ id: bottom.id, level: GOAL, kind: 'bot', title: 'The bottom' });
   const foot = el('footer');
-  foot.innerHTML = '<span>Made by <a href="https://gevernus.github.io/">Artem Povaliaev</a> with friends and a lot of AI agents.</span><span class="pix">SEE YOU AT THE BOTTOM</span>';
+  foot.innerHTML = '<span>Made by <a href="https://gevernus.github.io/">Artem Povaliaev</a> with friends and a lot of AI agents. Anonymous visit stats, no cookies.</span><span class="pix">SEE YOU AT THE BOTTOM</span>';
   floorsEl.append(foot);
 
   // ---------- floors arrive and light up as the cabin reaches them ----------
@@ -642,6 +643,31 @@
       requestAnimationFrame(frame);
     };
     requestAnimationFrame(frame);
+  })();
+</script>
+
+<script>
+  // visit stats (analytics.js): the landing, how deep a visitor went, which game they went to play
+  (() => {
+    const S = window.siteStats;
+    if (!S) return;
+    S.track('site_view');
+    let maxY = scrollY;
+    addEventListener('scroll', () => { if (scrollY > maxY) maxY = scrollY; }, { passive: true });
+    S.onLeave(() => {
+      const seen = maxY + innerHeight * 0.6;
+      let level = 0;
+      document.querySelectorAll('[id^="level-"]').forEach((f) => {
+        const n = Number(f.id.slice(6));
+        if (f.getBoundingClientRect().top + scrollY <= seen && n > level) level = n;
+      });
+      const full = document.documentElement.scrollHeight - innerHeight;
+      S.track('site_depth', { level, scroll_pct: full > 0 ? Math.round((Math.min(maxY, full) / full) * 100) : 100 });
+    });
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest && e.target.closest('a[href^="play.html"]');
+      if (a) S.track('site_play_click', { slug: new URLSearchParams(a.getAttribute('href').split('?')[1]).get('g') });
+    }, true);
   })();
 </script>
 </body>

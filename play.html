@@ -57,6 +57,7 @@
 <button class="btn exit" id="exit" type="button" aria-label="Exit fullscreen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1h2v5H1V4h3zM10 1h2v3h3v2h-5zM1 10h5v5H4v-3H1zM10 10h5v2h-3v3h-2z"/></svg></button>
 
 <script src="games.js"></script>
+<script src="analytics.js"></script>
 <script>
   const slug = new URLSearchParams(location.search).get('g');
   const game = (window.GAMES || []).find((g) => g.slug === slug && g.play);
@@ -100,6 +101,32 @@
     });
     document.getElementById('exit').addEventListener('click', () => setMax(false));
   }
+</script>
+
+<script>
+  // visit stats (analytics.js): which game was opened, how long it loaded, how long it was played on the site
+  (() => {
+    const S = window.siteStats;
+    const slug = new URLSearchParams(location.search).get('g');
+    if (!S || !(window.GAMES || []).some((g) => g.slug === slug && g.play)) return;
+    const t0 = performance.now();
+    let visible = 0;
+    let last = document.visibilityState === 'visible' ? performance.now() : 0;
+    let minutes = 0;
+    let fs = false;
+    S.track('site_play_open', { slug });
+    const frame = document.querySelector('#stage iframe');
+    if (frame) frame.addEventListener('load', () => S.track('site_play_loaded', { slug, ms: Math.round(performance.now() - t0) }), { once: true });
+    const tick = () => { if (last) { visible += performance.now() - last; last = performance.now(); } };
+    document.addEventListener('visibilitychange', () => { tick(); last = document.visibilityState === 'visible' ? performance.now() : 0; });
+    document.addEventListener('fullscreenchange', () => { if (document.fullscreenElement) fs = true; });
+    setInterval(() => {
+      tick();
+      const m = Math.floor(visible / 60000);
+      if (m > minutes) { minutes = m; S.track('site_play_minute', { slug, minute: m }); }
+    }, 5000);
+    S.onLeave(() => { tick(); S.track('site_play_end', { slug, seconds: Math.round(visible / 1000), fullscreen: fs }); });
+  })();
 </script>
 </body>
 </html>
