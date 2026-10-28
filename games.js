@@ -5,12 +5,12 @@
 window.GAMES = [
   {
     "slug": "stardust",
-    "title": "How to Become a Black Hole",
-    "pitch": "You are a speck of cosmic dust. Pull in matter, grow and live through a star's life all the way to a black hole.",
+    "title": "Cosmic Roguelike",
+    "pitch": "A space roguelike: every life is a star's life, from a speck of dust to its collapse. Upgrade between lives and grow far enough to become a black hole.",
     "author": "Artem",
     "status": "soon",
     "statusText": "Coming to CrazyGames",
-    "date": "2026-10-21",
+    "date": "2026-10-28",
     "cover": "covers/stardust.webp",
     "play": "play/stardust/",
     "links": [
