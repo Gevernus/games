@@ -4,7 +4,8 @@
 // published host, and not when the browser asks Do Not Track. Never breaks the page: every failure is silent.
 (() => {
   const KEY = 'phc_uH9aTG4iG4wTSKu53jZUUaaC79m429voYY4zzWCWZq6y'; // public write-only project key, as in the games' .env.production
-  const HOST = 'https://us.i.posthog.com';
+  // our pass-through to PostHog (tools/ph-proxy): ad blockers list i.posthog.com, not this address
+  const URL_E = 'https://72-56-88-42.sslip.io/e/';
   const on = location.hostname === 'gevernus.github.io' && navigator.doNotTrack !== '1';
   const rid = () => Array.from({ length: 16 }, () => Math.floor(Math.random() * 36).toString(36)).join('');
   const id = rid();
@@ -26,7 +27,7 @@
   const flush = (beacon) => {
     if (!on || !queue.length) return;
     try {
-      const url = `${HOST}/batch/`;
+      const url = URL_E;
       const b = body();
       if (beacon && navigator.sendBeacon && navigator.sendBeacon(url, new Blob([b], { type: 'text/plain' }))) return;
       fetch(url, { method: 'POST', body: b, keepalive: true, headers: { 'Content-Type': 'text/plain' } }).catch(() => {});
