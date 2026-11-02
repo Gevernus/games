@@ -40,5 +40,6 @@ window.GAMES = [
     "cover": "covers/totalizator.webp",
     "play": "play/totalizator/",
     "links": []
-  }
+  },
+  { "slug": "ogonek", "title": "Ogonek", "pitch": "A burner festival on a Bali mountain, and you have a flamethrower. Burning dancers spread the fire: burn every camp down, beat the DJ, then leave no trace.", "author": "Artem", "status": "dev", "statusText": "Fresh build", "date": "2026-11-02", "cover": "covers/ogonek.webp", "play": "play/ogonek/", "links": [] }
 ];
