@@ -30,7 +30,7 @@ window.GAMES = [
     "statusText": "Play free",
     "date": "2026-10-26",
     "cover": "covers/monkey-clicker.webp",
-    "trailer": { "src": "media/monkey-clicker/trailer.mp4", "sound": false },
+    "trailer": { "src": "media/monkey-clicker/trailer.mp4", "sound": true },
     "shots": ["media/monkey-clicker/1.webp", "media/monkey-clicker/2.webp", "media/monkey-clicker/3.webp", "media/monkey-clicker/4.webp"],
     "play": "play/monkey-clicker/",
     "links": []
@@ -44,10 +44,10 @@ window.GAMES = [
     "statusText": "Play free",
     "date": "2026-10-27",
     "cover": "covers/totalizator.webp",
-    "trailer": { "src": "media/totalizator/trailer.mp4", "sound": false },
+    "trailer": { "src": "media/totalizator/trailer.mp4", "sound": true },
     "shots": ["media/totalizator/1.webp", "media/totalizator/2.webp", "media/totalizator/3.webp", "media/totalizator/4.webp", "media/totalizator/5.webp"],
     "play": "play/totalizator/",
     "links": []
   },
-  { "slug": "ogonek", "title": "Ogonek", "pitch": "A burner festival on a Bali mountain, and you have a flamethrower. Burning dancers spread the fire: burn every camp down, beat the DJ, then leave no trace.", "author": "Artem", "status": "dev", "statusText": "Fresh build", "date": "2026-11-02", "cover": "covers/ogonek.webp", "trailer": { "src": "media/ogonek/trailer.mp4", "sound": false }, "shots": ["media/ogonek/1.webp", "media/ogonek/2.webp", "media/ogonek/3.webp", "media/ogonek/4.webp", "media/ogonek/5.webp"], "play": "play/ogonek/", "links": [] }
+  { "slug": "ogonek", "title": "Ogonek", "pitch": "A burner festival on a Bali mountain, and you have a flamethrower. Burning dancers spread the fire: burn every camp down, beat the DJ, then leave no trace.", "author": "Artem", "status": "dev", "statusText": "Fresh build", "date": "2026-11-02", "cover": "covers/ogonek.webp", "trailer": { "src": "media/ogonek/trailer.mp4", "sound": true }, "shots": ["media/ogonek/1.webp", "media/ogonek/2.webp", "media/ogonek/3.webp", "media/ogonek/4.webp", "media/ogonek/5.webp"], "play": "play/ogonek/", "links": [] }
 ];
