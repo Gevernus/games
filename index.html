@@ -108,7 +108,7 @@
   /* ---------- the shaft ---------- */
   .shaft { position: relative; padding: 22vh 0 0; }
   .shaft::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 40vh; background: linear-gradient(var(--bg), rgba(8, 6, 26, 0)); pointer-events: none; }
-  .shaft-inner { position: relative; max-width: 1040px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
+  .shaft-inner { position: relative; max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
   /* two lift cables running the whole way down */
   .shaft-inner::before, .shaft-inner::after { content: ''; position: absolute; top: -22vh; bottom: 0; width: 6px; background: repeating-linear-gradient(160deg, #4b4570 0 3px, #221e38 3px 6px); box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); opacity: 0.85; }
   .shaft-inner::before { left: clamp(2px, 1.4vw, 14px); }
@@ -131,18 +131,39 @@
   .floor.here .girder::after { opacity: 1; }
 
   /* game card on a floor */
-  .card { position: relative; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); background: linear-gradient(180deg, var(--panel), var(--panel-2)); border: 1px solid var(--line); border-bottom: 0; border-radius: 14px 14px 0 0; box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45); transition: transform 0.35s cubic-bezier(.2, .8, .2, 1), box-shadow 0.35s; transform-style: preserve-3d; }
+  .card { position: relative; display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); background: linear-gradient(180deg, var(--panel), var(--panel-2)); border: 1px solid var(--line); border-bottom: 0; border-radius: 14px 14px 0 0; box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45); }
   .card::before { content: ''; position: absolute; inset: -1px -1px 0; border-radius: 15px 15px 0 0; padding: 1px 1px 0; background: linear-gradient(135deg, var(--magenta), var(--cyan) 50%, var(--gold)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.35s; pointer-events: none; }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 40px rgba(255, 61, 207, 0.18); }
   .card:hover::before, .floor.here .card::before { opacity: 1; }
-  .card.tilting { transition: transform 0.08s linear, box-shadow 0.35s; }
-  .cover { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 13px 0 0 0; background: #07061a; }
-  .cover img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(.2, .8, .2, 1); }
-  .card:hover .cover img { transform: scale(1.07); }
-  .cover::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.32) 48%, rgba(255, 255, 255, 0.08) 54%, transparent 66%); transform: translateX(-110%); pointer-events: none; }
-  .card:hover .cover::after { transform: translateX(110%); transition: transform 0.9s cubic-bezier(.3, .6, .3, 1); }
-  .glare { position: absolute; inset: 0; border-radius: 14px 14px 0 0; pointer-events: none; opacity: 0; transition: opacity 0.3s; background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 0%), rgba(255, 255, 255, 0.08), transparent 45%); }
-  .card.tilting .glare { opacity: 1; }
+
+  /* the gallery: a big viewer (trailer first, then screenshots) and a strip of thumbnails, like a Steam page */
+  .gallery { min-width: 0; padding: 10px 0 10px 10px; display: flex; flex-direction: column; gap: 8px; position: relative; z-index: 1; }
+  .viewer { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 8px; background: #000; }
+  .viewer img, .viewer video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
+  .viewer [hidden] { display: none !important; }
+  .viewer.clicky { cursor: pointer; }
+  .vbtn { position: absolute; z-index: 2; width: 40px; height: 40px; display: grid; place-items: center; padding: 0; color: #fff; font: 16px/1 system-ui, sans-serif; background: rgba(8, 6, 26, 0.72); border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 6px; cursor: pointer; transition: background 0.15s; }
+  .vbtn:hover { background: rgba(50, 40, 96, 0.95); }
+  .vbtn svg { width: 18px; height: 18px; fill: currentColor; }
+  .vbtn.prev { left: 8px; top: 50%; margin-top: -20px; }
+  .vbtn.next { right: 8px; top: 50%; margin-top: -20px; }
+  .vbtn.full { right: 8px; bottom: 8px; }
+  .vbtn.sound { left: 8px; bottom: 8px; width: auto; padding: 0 12px; gap: 8px; display: flex; align-items: center; font: 8px/1 var(--pixel); color: var(--gold); }
+  .bigplay { position: absolute; z-index: 1; left: 50%; top: 50%; width: 76px; height: 76px; margin: -38px 0 0 -38px; display: grid; place-items: center; border-radius: 50%; background: rgba(8, 6, 26, 0.72); border: 2px solid rgba(255, 255, 255, 0.5); pointer-events: none; }
+  .bigplay::before { content: ''; margin-left: 6px; border-left: 24px solid #fff; border-top: 14px solid transparent; border-bottom: 14px solid transparent; }
+  .progress-line { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; height: 3px; background: linear-gradient(90deg, var(--magenta), var(--gold)); transform: scaleX(var(--k, 0)); transform-origin: left; pointer-events: none; }
+  .viewer:fullscreen, .viewer:-webkit-full-screen { border-radius: 0; }
+  .thumbs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: thin; scrollbar-color: var(--steel) transparent; }
+  .thumb { position: relative; flex: 0 0 auto; width: 96px; aspect-ratio: 16 / 9; padding: 0; overflow: hidden; background: #000; border: 2px solid transparent; border-radius: 4px; cursor: pointer; opacity: 0.62; transition: opacity 0.15s, border-color 0.15s; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .thumb:hover { opacity: 1; }
+  .thumb.on { opacity: 1; border-color: var(--gold); }
+  .thumb.vid::after { content: ''; position: absolute; left: 50%; top: 50%; margin: -9px 0 0 -6px; border-left: 15px solid #fff; border-top: 9px solid transparent; border-bottom: 9px solid transparent; filter: drop-shadow(0 0 4px #000); }
+
+  /* a game opened right over the page */
+  .game-layer { position: fixed; inset: 0; z-index: 50; background: #000; }
+  .game-layer[hidden] { display: none; }
+  .game-layer iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+  html.in-game, html.in-game body { overflow: hidden; }
   .body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; }
   .meta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 13px; color: var(--muted); }
   .chip { --c: var(--gold); font: 8px/1 var(--pixel); color: var(--c); border: 1px solid var(--c); padding: 6px 8px 5px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.04em; background: color-mix(in srgb, var(--c) 10%, transparent); }
@@ -236,7 +257,11 @@
   @keyframes slice-a { 0%, 88%, 100% { clip-path: inset(0 0 100% 0); transform: none; } 89% { clip-path: inset(12% 0 60% 0); transform: translateX(-6px); } 91% { clip-path: inset(55% 0 20% 0); transform: translateX(5px); } 93% { clip-path: inset(30% 0 45% 0); transform: translateX(-3px); } }
   @keyframes slice-b { 0%, 88%, 100% { clip-path: inset(100% 0 0 0); transform: none; } 89% { clip-path: inset(62% 0 8% 0); transform: translateX(6px); } 91% { clip-path: inset(20% 0 62% 0); transform: translateX(-5px); } 93% { clip-path: inset(70% 0 5% 0); transform: translateX(3px); } }
 
-  @media (max-width: 1180px) { .shaft-inner { padding-right: 120px; } }
+  @media (max-width: 1400px) { .shaft-inner { padding-right: 120px; } }
+  @media (max-width: 1040px) {
+    .card { grid-template-columns: 1fr; }
+    .gallery { padding: 10px 10px 0; }
+  }
   @media (max-width: 760px) {
     .hero { min-height: 640px; }
     .hero-art img { object-position: 56% 50%; }
@@ -251,8 +276,13 @@
     .stat.days { grid-column: span 2; }
     .cells { gap: 2px; height: 18px; }
     .shaft-inner { padding-left: 16px; padding-right: 40px; }
-    .card { grid-template-columns: 1fr; }
-    .cover { border-radius: 13px 13px 0 0; }
+    .gallery { padding: 8px 8px 0; }
+    .vbtn { width: 30px; height: 30px; }
+    .vbtn svg { width: 14px; height: 14px; }
+    .vbtn.prev, .vbtn.next { margin-top: -15px; }
+    .vbtn.sound { padding: 0 8px; font-size: 7px; }
+    .bigplay { width: 56px; height: 56px; margin: -28px 0 0 -28px; }
+    .thumb { width: 80px; }
     .body { padding: 16px 18px 18px; }
     .floor { margin-bottom: 26vh; }
     .floor-head .extra { display: none; }
@@ -277,7 +307,6 @@
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .arrive { opacity: 1; transform: none; }
-    .card:hover { transform: none; }
   }
 </style>
 </head>
@@ -401,18 +430,198 @@
     return window.siteStats ? window.siteStats.carry(u) : u;
   };
 
+  // ---------- the gallery on each floor: trailer, then screenshots ----------
+  // It plays by itself only while it is on screen (muted until asked, browsers forbid sound before a click), loads a
+  // trailer only then, and stops rotating once the visitor picks something. Only one plays at a time.
+  const SAVE_DATA = !!(navigator.connection && navigator.connection.saveData);
+  const AUTO = !reduced && !SAVE_DATA;
+  const SHOT_MS = 4500;
+  const galleries = [];
+  let soundOn = false;
+  let gameOpen = false;
+  const statOnce = new Set();
+  const mediaStat = (slug, action) => {
+    const k = `${slug}:${action}`;
+    if (!statOnce.has(k) && window.siteStats) { statOnce.add(k); window.siteStats.track('site_media', { slug, action }); }
+  };
+  const ICON = {
+    prev: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 2h2v2h-2zM8 4h2v2H8zM6 6h2v4H6zM8 10h2v2H8zM10 12h2v2h-2z"/></svg>',
+    next: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2h2v2H4zM6 4h2v2H6zM8 6h2v4H8zM6 10h2v2H6zM4 12h2v2H4z"/></svg>',
+    full: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 1h5v2H3v3H1zM10 1h5v5h-2V3h-3zM1 10h2v3h3v2H1zM13 10h2v5h-5v-2h3z"/></svg>',
+  };
+  const iconBtn = (cls, label, svg) => { const b = el('button', `vbtn ${cls}`); b.type = 'button'; b.setAttribute('aria-label', label); b.title = label; if (svg) b.innerHTML = svg; return b; };
+
+  function buildGallery(g) {
+    const items = [];
+    if (g.trailer) items.push({ video: true, src: g.trailer.src, thumb: g.cover, sound: !!g.trailer.sound, label: 'Trailer' });
+    (g.shots || []).forEach((src, i) => items.push({ src, thumb: src.replace('.webp', '-thumb.webp'), label: `Screenshot ${i + 1}` }));
+    if (!items.length) items.push({ src: g.cover, thumb: g.cover, label: g.title });
+
+    const root = el('div', 'gallery');
+    root.setAttribute('role', 'group');
+    root.setAttribute('aria-label', `${g.title}: trailer and screenshots`);
+    const viewer = el('div', 'viewer clicky');
+    const video = el('video');
+    video.muted = true; video.playsInline = true; video.preload = 'none'; video.hidden = true;
+    if (g.cover) video.poster = g.cover;
+    const img = el('img');
+    img.alt = g.title; img.decoding = 'async'; img.width = 1280; img.height = 720; img.hidden = true;
+    const bigplay = el('span', 'bigplay'); bigplay.hidden = true;
+    const line = el('i', 'progress-line'); line.hidden = true;
+    const prev = iconBtn('prev', 'Previous', ICON.prev), next = iconBtn('next', 'Next', ICON.next);
+    const full = iconBtn('full', 'Fullscreen', ICON.full);
+    const sound = iconBtn('sound', 'Sound'); sound.hidden = true;
+    viewer.append(img, video, bigplay, line, sound, full);
+    if (items.length > 1) viewer.append(prev, next);
+    const strip = el('div', 'thumbs');
+    const thumbs = items.map((it) => {
+      const b = el('button', `thumb${it.video ? ' vid' : ''}`);
+      b.type = 'button'; b.setAttribute('aria-label', it.label); b.title = it.label;
+      const t = el('img'); t.alt = ''; t.loading = 'lazy'; t.decoding = 'async'; t.src = it.thumb;
+      b.append(t);
+      b.addEventListener('click', () => { pick(items.indexOf(it)); mediaStat(g.slug, it.video ? 'trailer' : 'screenshot'); });
+      strip.append(b);
+      return b;
+    });
+    root.append(viewer);
+    if (items.length > 1) root.append(strip);
+
+    let at = -1, seen = false, picked = false, timer = 0;
+    const cur = () => items[at];
+    const paintSound = () => { sound.textContent = soundOn ? 'SOUND ON' : 'SOUND OFF'; };
+    const paintBig = () => { bigplay.hidden = !(cur().video && video.paused); };
+    const stopTimer = () => { clearTimeout(timer); timer = 0; };
+    // the rotation: a screenshot stays a few seconds, a trailer until it ends
+    const run = () => {
+      stopTimer();
+      if (!seen || gameOpen || document.hidden) { video.pause(); return; }
+      if (cur().video) {
+        if (AUTO || picked) start();
+        return;
+      }
+      video.pause();
+      if (AUTO && !picked && items.length > 1) timer = setTimeout(() => show((at + 1) % items.length), SHOT_MS);
+    };
+    const start = () => {
+      galleries.forEach((o) => { if (o.stop !== stop) o.stop(); });
+      if (!video.getAttribute('src')) video.src = cur().src;
+      video.muted = !(soundOn && cur().sound);
+      video.play().catch(() => {
+        // the browser wants a click for sound: go on muted, the button stays there
+        if (video.muted) return paintBig();
+        video.muted = true; soundOn = false; paintSound();
+        video.play().catch(paintBig);
+      });
+    };
+    const stop = () => { video.pause(); stopTimer(); };
+    const show = (i) => {
+      at = i;
+      const it = items[i];
+      thumbs.forEach((b, k) => { b.classList.toggle('on', k === i); if (k === i) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); });
+      // keep the strip itself in view, without moving the page
+      const b = thumbs[i];
+      strip.scrollLeft = b.offsetLeft - strip.offsetLeft - (strip.clientWidth - b.offsetWidth) / 2;
+      video.hidden = !it.video; img.hidden = !!it.video; line.hidden = !it.video;
+      sound.hidden = !(it.video && it.sound);
+      if (it.video) { paintSound(); } else { video.pause(); img.src = it.src; line.style.setProperty('--k', 0); }
+      paintBig();
+      run();
+    };
+    const pick = (i) => { picked = true; if (i === at && cur().video) { video.currentTime = 0; } show(i); };
+    prev.addEventListener('click', (e) => { e.stopPropagation(); pick((at - 1 + items.length) % items.length); mediaStat(g.slug, 'screenshot'); });
+    next.addEventListener('click', (e) => { e.stopPropagation(); pick((at + 1) % items.length); mediaStat(g.slug, 'screenshot'); });
+    sound.addEventListener('click', (e) => {
+      e.stopPropagation();
+      soundOn = !soundOn; video.muted = !soundOn; paintSound();
+      if (soundOn) { mediaStat(g.slug, 'sound'); picked = true; if (video.paused) start(); }
+    });
+    full.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+      if (fsEl) return (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      const req = viewer.requestFullscreen || viewer.webkitRequestFullscreen;
+      if (req) req.call(viewer);
+      else if (cur().video && video.webkitEnterFullscreen) video.webkitEnterFullscreen(); // iPhone: only a video can
+      mediaStat(g.slug, 'fullscreen');
+    });
+    if (!(viewer.requestFullscreen || viewer.webkitRequestFullscreen || video.webkitEnterFullscreen)) full.hidden = true;
+    // a click on the picture: pause or play a trailer, next for a screenshot
+    viewer.addEventListener('click', () => {
+      picked = true;
+      if (!cur().video) return items.length > 1 && show((at + 1) % items.length);
+      if (video.paused) { start(); mediaStat(g.slug, 'trailer'); } else video.pause();
+    });
+    video.addEventListener('play', paintBig);
+    video.addEventListener('pause', paintBig);
+    video.addEventListener('timeupdate', () => { if (video.duration) line.style.setProperty('--k', video.currentTime / video.duration); });
+    video.addEventListener('ended', () => {
+      if (items.length > 1 && !picked) show((at + 1) % items.length);
+      else { video.currentTime = 0; paintBig(); }
+    });
+    // a trailer that can't load must not leave a dead picture: go on to the screenshots, drop it from the rotation
+    video.addEventListener('error', () => {
+      if (!cur().video) return;
+      if (items.length < 2) { bigplay.hidden = true; return; }
+      items.shift();
+      thumbs.shift().remove();
+      show(0);
+    });
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { pick((at - 1 + items.length) % items.length); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { pick((at + 1) % items.length); e.preventDefault(); }
+    });
+    galleries.push({ root, stop, wake: () => run() });
+    new IntersectionObserver(([e]) => { seen = e.isIntersecting; if (at >= 0) run(); }, { threshold: 0.55 }).observe(viewer);
+    show(0);
+    return root;
+  }
+  document.addEventListener('visibilitychange', () => galleries.forEach((o) => (document.hidden ? o.stop() : o.wake())));
+
+  // ---------- a game opens over the page, in play.html, and closing it leaves the visitor on the same floor ----------
+  // The links stay real (a new tab, or no script, still gets play.html). Browser Back closes the game too.
+  let layer = null;
+  const openGame = (slug, url, lvl) => {
+    if (layer) return;
+    gameOpen = true;
+    galleries.forEach((o) => o.stop());
+    layer = el('div', 'game-layer');
+    const frame = el('iframe');
+    frame.title = 'Game';
+    frame.allow = 'fullscreen; autoplay; gamepad; clipboard-write';
+    frame.addEventListener('load', () => { try { frame.contentWindow.focus(); } catch {} });
+    frame.src = url;
+    layer.append(frame);
+    document.body.append(layer);
+    document.documentElement.classList.add('in-game');
+    history.pushState({ game: slug }, '', `#level-${lvl}`);
+  };
+  const removeGame = () => {
+    if (!layer) return;
+    // the frame's own stats say goodbye (its time played); gone at once from the screen, but removing the frame in the
+    // same moment would cut that request off
+    const old = layer;
+    try { old.querySelector('iframe').contentWindow.dispatchEvent(new Event('pagehide')); } catch {}
+    old.hidden = true;
+    setTimeout(() => old.remove(), 400);
+    layer = null;
+    gameOpen = false;
+    document.documentElement.classList.remove('in-game');
+    galleries.forEach((o) => o.wake());
+  };
+  addEventListener('popstate', removeGame);
+  addEventListener('message', (e) => {
+    if (e.origin !== location.origin || !e.data || e.data.type !== 'close-game') return;
+    if (history.state && history.state.game) history.back(); else removeGame();
+  });
+  // a reload while a game was open: the state outlives the page, the game doesn't
+  if (history.state && history.state.game) history.replaceState(null, '', location.href);
+
   games.forEach((g, i) => {
     const lvl = i + 1;
     const floor = el('section', 'floor game arrive');
     floor.id = `level-${lvl}`;
     const card = el('article', 'card');
-    const cover = el(g.play ? 'a' : 'div', 'cover');
-    if (g.play) { cover.href = playUrl(g); cover.setAttribute('aria-label', `Play ${g.title}`); }
-    if (g.cover) {
-      const img = el('img');
-      img.src = g.cover; img.alt = g.title; img.loading = 'lazy'; img.decoding = 'async'; img.width = 960; img.height = 540;
-      cover.append(img);
-    }
+    const gal = g.trailer || (g.shots && g.shots.length) || g.cover ? buildGallery(g) : null;
     const body = el('div', 'body');
     const meta = el('div', 'meta');
     meta.append(el('span', `chip ${g.status}`, g.statusText));
@@ -424,11 +633,17 @@
       const a = el('a', 'play');
       a.href = playUrl(g);
       a.append(el('i'), document.createTextNode('PLAY'));
+      a.addEventListener('click', (e) => {
+        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        openGame(g.slug, a.href, lvl);
+      });
       actions.append(a);
     }
     (g.links || []).forEach((l) => { const a = el('a', 'more', `${l.label} ↗`); a.href = l.url; a.target = '_blank'; a.rel = 'noopener'; actions.append(a); });
     body.append(actions);
-    card.append(cover, body, el('span', 'glare'));
+    if (gal) card.append(gal);
+    card.append(body);
     floor.append(head(lvl), card, el('div', 'girder'));
     floorsEl.append(floor);
     stops.push({ id: floor.id, level: lvl, kind: 'game', title: g.title });
@@ -477,25 +692,6 @@
   document.querySelectorAll('.arrive').forEach((n) => arriveIO.observe(n));
   const hereIO = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle('here', e.isIntersecting)), { rootMargin: '-38% 0px -38% 0px' });
   document.querySelectorAll('.floor').forEach((n) => hereIO.observe(n));
-
-  // ---------- tilt and glare on hover, only with a real mouse ----------
-  if (!reduced && matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    document.querySelectorAll('.card').forEach((card) => {
-      let raf = 0;
-      card.addEventListener('pointermove', (ev) => {
-        const r = card.getBoundingClientRect();
-        const px = (ev.clientX - r.left) / r.width, py = (ev.clientY - r.top) / r.height;
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(() => {
-          card.classList.add('tilting');
-          card.style.transform = `perspective(1100px) rotateX(${(0.5 - py) * 5}deg) rotateY(${(px - 0.5) * 6}deg) translateY(-4px)`;
-          card.style.setProperty('--mx', `${px * 100}%`);
-          card.style.setProperty('--my', `${py * 100}%`);
-        });
-      });
-      card.addEventListener('pointerleave', () => { cancelAnimationFrame(raf); card.classList.remove('tilting'); card.style.transform = ''; });
-    });
-  }
 
   // ---------- gauge: rail stops and the elevator panel ----------
   const gauge = $('gauge'), rail = $('rail'), cab = $('cab'), lv = $('lv'), mtr = $('mtr'), readout = $('readout');

@@ -78,6 +78,10 @@
     // back to the floor this game lives on
     const backUrl = `./#level-${window.GAMES.indexOf(game) + 1}`;
     document.getElementById('back').href = window.siteStats ? window.siteStats.carry(backUrl) : backUrl;
+    // opened over the landing (index.html): back closes that overlay, the page below stays where it was
+    let overLanding = false;
+    try { overLanding = parent !== window && parent.location.origin === location.origin; } catch {}
+    if (overLanding) document.getElementById('back').addEventListener('click', (e) => { e.preventDefault(); parent.postMessage({ type: 'close-game' }, location.origin); });
     document.title = `${game.title} · 25 Games by New Year`;
     const frame = document.createElement('iframe');
     frame.title = game.title;
