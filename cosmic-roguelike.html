@@ -9,50 +9,133 @@
 <meta property="og:title" content="Cosmic Roguelike: a free browser game by Mad Gever">
 <meta property="og:description" content="A space roguelike: every life is a star&#39;s life, from a speck of dust to its collapse. Upgrade between lives and grow far enough to become a black hole.">
 <meta property="og:image" content="https://gevernus.github.io/games/covers/stardust.webp">
-<meta name="theme-color" content="#08061a">
+<meta name="theme-color" content="#060a1a">
 <link rel="icon" type="image/png" sizes="32x32" href="art/logo-32.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Cosmic Roguelike","description":"A space roguelike: every life is a star's life, from a speck of dust to its collapse. Upgrade between lives and grow far enough to become a black hole.","url":"https://gevernus.github.io/games/cosmic-roguelike.html","image":"https://gevernus.github.io/games/covers/stardust.webp","gamePlatform":"Web browser","playMode":"SinglePlayer","isAccessibleForFree":true,"datePublished":"2026-10-28","author":{"@type":"Organization","name":"Mad Gever","url":"https://gevernus.github.io/games/"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;500;600&display=swap">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Cosmic Roguelike","description":"A space roguelike: every life is a star's life, from a speck of dust to its collapse. Upgrade between lives and grow far enough to become a black hole.","url":"https://gevernus.github.io/games/cosmic-roguelike.html","image":"https://gevernus.github.io/games/covers/stardust.webp","gamePlatform":"Web browser","playMode":"SinglePlayer","isAccessibleForFree":true,"datePublished":"2026-10-28","genre":["Roguelike","Space","Upgrades","Arcade","Singleplayer","Atmospheric"],"author":{"@type":"Organization","name":"Mad Gever","url":"https://gevernus.github.io/games/"}}</script>
 <style>
-  :root { --bg: #08061a; --panel: #120f26; --line: rgba(160, 140, 255, 0.16); --text: #ece8ff; --muted: #a39cc4; --gold: #ffcf4a; --magenta: #ff3dcf; color-scheme: dark; }
+  :root { --bg: #060a1a; --panel: rgba(14, 22, 48, 0.78); --line: rgba(233, 195, 123, 0.22); --text: #e8ecf8; --muted: #9aa6c8; --accent: #e9c37b; --accent2: #7cc4ff;
+    --display: 'Cinzel', serif; --body: 'Inter', system-ui, sans-serif; --sub: 'Cinzel', serif; color-scheme: dark; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font: 17px/1.6 system-ui, -apple-system, 'Segoe UI', sans-serif; }
-  a { color: var(--gold); }
-  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
-  header { padding: 16px 0; border-bottom: 1px solid var(--line); }
-  header a { color: var(--text); text-decoration: none; font-weight: 600; }
-  main { padding: 28px 0 40px; display: grid; gap: 22px; }
-  .kicker, .by { color: var(--muted); font-size: 15px; }
-  h1 { font-size: clamp(30px, 6vw, 48px); line-height: 1.1; }
-  h2 { font-size: 20px; margin-bottom: 8px; }
-  .pitch { font-size: 19px; }
-  .play { justify-self: start; display: inline-block; padding: 14px 26px; border-radius: 8px; background: linear-gradient(90deg, var(--magenta), #ff8a3d); color: #fff; font-weight: 700; text-decoration: none; }
-  video, main > img { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 10px; border: 1px solid var(--line); }
-  section p + p { margin-top: 10px; }
-  ul { padding-left: 22px; }
-  .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
-  .shots img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
-  footer { padding: 24px 0 40px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+  body { background: var(--bg); color: var(--text); font: 16px/1.6 var(--body); -webkit-font-smoothing: antialiased; min-height: 100vh; }
+  /* the game's art behind the top of the page, as Steam does */
+  .bdwrap { position: absolute; inset: 0 0 auto; height: 820px; overflow: hidden; z-index: -1; pointer-events: none; }
+  .backdrop { position: absolute; inset: 0; background: url("covers/stardust.webp") center top / cover no-repeat; filter: blur(10px) saturate(1.15); opacity: 0.5; transform: scale(1.05);
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,0.6) 45%, transparent 100%); mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,0.6) 45%, transparent 100%); pointer-events: none; z-index: -1; }
+  a { color: var(--accent); }
+  .wrap { position: relative; max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+  .top { display: flex; align-items: center; gap: 10px; padding: 18px 0 6px; font-size: 13px; color: var(--muted); }
+  .top a { color: inherit; text-decoration: none; } .top a:hover { color: var(--text); }
+  .top img { width: 22px; height: 22px; }
+  h1 { font: 800 clamp(32px, 6vw, 56px)/1.05 var(--display); text-transform: uppercase; letter-spacing: 0.06em; margin: 6px 0 18px;
+    background: linear-gradient(180deg, #fff4d2, #e9c37b 55%, #a8772e); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 2px 14px rgba(0,0,0,0.55)); }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45); }
+  .hero { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: 14px; padding: 14px; }
+  .stage { position: relative; aspect-ratio: 16 / 9; background: #000; border-radius: 3px; overflow: hidden; }
+  .stage video, .stage img { width: 100%; height: 100%; object-fit: contain; display: block; background: #000; }
+  .strip { display: flex; gap: 6px; margin-top: 8px; overflow-x: auto; scrollbar-width: thin; padding-bottom: 4px; }
+  .strip a { position: relative; flex: none; width: 116px; aspect-ratio: 16 / 9; border-radius: 2px; overflow: hidden; outline: 2px solid transparent; opacity: 0.6; transition: opacity 0.15s, outline-color 0.15s; }
+  .strip a:hover { opacity: 0.9; } .strip a.on { opacity: 1; outline-color: var(--accent); }
+  .strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .strip .vid { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,0.3); }
+  .strip .vid svg { width: 22px; fill: #fff; filter: drop-shadow(0 1px 3px #000); }
+  .side { display: flex; flex-direction: column; gap: 12px; font-size: 14px; }
+  .capsule { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 3px; display: block; }
+  .short { color: var(--text); font-size: 15px; line-height: 1.5; }
+  .facts { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; font-size: 12.5px; }
+  .facts dt { color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; padding-top: 2px; }
+  .facts dd { color: var(--accent2); }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag { padding: 2px 8px; border-radius: 3px; background: rgba(124, 196, 255, 0.12); color: #a9d6ff; font-size: 12px; }
+  /* the play box, Steam's purchase area */
+  .buy { position: relative; display: flex; align-items: center; gap: 16px; margin: 26px 0 0; padding: 18px 20px 18px 22px; }
+  .buy h2 { flex: 1; font: 400 clamp(17px, 2.4vw, 22px)/1.25 var(--sub); letter-spacing: 0.01em; }
+  .buy .plat { display: flex; gap: 8px; align-items: center; color: var(--muted); font-size: 12px; margin-top: 4px; font-family: var(--body); }
+  .buy .plat svg { width: 14px; fill: currentColor; }
+  .price { display: flex; align-items: stretch; border-radius: 4px; overflow: hidden; background: rgba(0, 0, 0, 0.35); flex: none; }
+  .price .free { display: grid; place-items: center; padding: 0 14px; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; color: var(--accent2); }
+  .play { display: inline-flex; align-items: center; gap: 10px; padding: 13px 26px 13px 22px; font: 700 15px/1 var(--body); letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+    color: #1a1206; background: linear-gradient(180deg, #ffe7a8, #d9a64a); box-shadow: inset 0 1px 0 rgba(255,255,255,0.55), inset 0 -2px 0 rgba(0,0,0,0.18); transition: filter 0.15s, box-shadow 0.15s; }
+  .play svg { width: 13px; fill: currentColor; }
+  .play:hover { filter: brightness(1.08); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 0 24px #d9a64aaa; }
+  .cols { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: 22px; margin: 30px 0 40px; align-items: start; }
+  .cols > div { display: grid; gap: 26px; }
+  section h2, .box h3 { font: 400 13px/1 var(--body); text-transform: uppercase; letter-spacing: 0.12em; color: var(--text); padding-bottom: 8px; margin-bottom: 12px;
+    border-bottom: 1px solid; border-image: linear-gradient(90deg, var(--accent), transparent) 1; }
+  .main-col section {  }
+  .main-col p { color: #cfd3e6; } .main-col p + p { margin-top: 12px; }
+  .main-col ul, .box ul { padding-left: 18px; } .main-col li + li { margin-top: 4px; }
+  .box { padding: 16px 18px; font-size: 14px; }
+  .box p { color: var(--muted); } .box p + p { margin-top: 8px; }
+  .more { display: grid; gap: 10px; }
+  .more a { display: grid; grid-template-columns: 92px 1fr; gap: 10px; align-items: center; text-decoration: none; color: var(--text); font-size: 13px; line-height: 1.35; }
+  .more img { width: 92px; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 2px; }
+  .more b { display: block; color: var(--accent); font-weight: 600; }
+  footer { padding: 22px 0 40px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); }
+  footer a { color: inherit; }
+  @media (max-width: 760px) {
+    .hero, .cols { grid-template-columns: minmax(0, 1fr); }
+    .capsule, .top .mid { display: none; }
+    .buy { flex-direction: column; align-items: stretch; text-align: center; }
+    .buy .plat { justify-content: center; }
+    .price { justify-content: center; } .play { flex: 1; justify-content: center; }
+  }
 </style>
 </head>
 <body>
-<header><div class="wrap"><a href="./">← All games · 25 Games by New Year</a></div></header>
-<main class="wrap">
-  <p class="kicker">Mad Gever · game 1 of 25 · Play free</p>
+<div class="bdwrap" aria-hidden="true"><div class="backdrop"></div></div>
+<div class="wrap">
+  <nav class="top"><a href="./"><img src="art/logo-32.png" alt=""></a><a href="./">All games</a><span>›</span><a class="mid" href="./">25 Games by New Year</a><span class="mid">›</span><span>Cosmic Roguelike</span></nav>
   <h1>Cosmic Roguelike</h1>
-  <p class="by">A free browser game by Mad Gever (Artem). No download, no sign-up.</p>
-  <p class="pitch">A space roguelike: every life is a star&#39;s life, from a speck of dust to its collapse. Upgrade between lives and grow far enough to become a black hole.</p>
-  <a class="play" href="play.html?g=stardust">Play Cosmic Roguelike free</a>
-  <video controls preload="none" playsinline poster="covers/stardust.webp" src="media/stardust/trailer.mp4" aria-label="Cosmic Roguelike trailer"></video>
-  <section><h2>About the game</h2><p>A roguelike about the life of a star. Each life starts as a speck of dust right after the Big Bang and ends when your hydrogen runs out; between lives you spend the stardust you earned on upgrades that last. Move, and everything smaller than you falls in.</p><p>Grow into a nebula, a protostar, a star, a blue giant and a hypergiant. Your hydrogen burns from the first second. When it runs out you collapse, and your mass and form decide what you leave: a cold cloud, a white dwarf, a pulsar, a magnetar or a black hole.</p><p>Stars much bigger than you pull you in and tear matter off you. Touch one and the life is over. A star a little bigger than you is prey: drink from it, but keep off the red line round it. Two stars of a size merge.</p><p>Become a black hole: everything around you is swallowed, a moment of silence, then the stars fall into you on the beat of the music.</p></section>
-  <section><h2>Controls</h2><ul><li>Click or press any key to set off the Big Bang.</li><li>Move the mouse: your star follows the cursor. WASD or the arrow keys also steer.</li><li>When you transform, click a form or press 1, 2 or 3.</li><li>Esc or P: pause.</li><li>On a phone: touch and hold where you want to go, tap a form when you transform.</li></ul></section>
-  <section><h2>Screenshots</h2><div class="shots"><a href="media/stardust/1.webp"><img src="media/stardust/1-thumb.webp" loading="lazy" alt="Cosmic Roguelike screenshot 1"></a><a href="media/stardust/2.webp"><img src="media/stardust/2-thumb.webp" loading="lazy" alt="Cosmic Roguelike screenshot 2"></a><a href="media/stardust/3.webp"><img src="media/stardust/3-thumb.webp" loading="lazy" alt="Cosmic Roguelike screenshot 3"></a><a href="media/stardust/4.webp"><img src="media/stardust/4-thumb.webp" loading="lazy" alt="Cosmic Roguelike screenshot 4"></a><a href="media/stardust/5.webp"><img src="media/stardust/5-thumb.webp" loading="lazy" alt="Cosmic Roguelike screenshot 5"></a><a href="media/stardust/6.webp"><img src="media/stardust/6-thumb.webp" loading="lazy" alt="Cosmic Roguelike screenshot 6"></a></div></section>
-  <section><h2>Made for a challenge</h2><p>Cosmic Roguelike is game 1 of <a href="./">25 Games by New Year</a>: Mad Gever makes 25 small web games with AI coding agents (Claude Code) from October 19 to December 31, 2026. Cosmic Roguelike came out on 28 October 2026.</p><ul><li><a href="https://ldjam.com/events/ludum-dare/60/stardust" rel="noopener">Ludum Dare 60 jam version</a></li></ul></section>
-  <section><h2>More games by Mad Gever</h2><ul><li><a href="monkey-clicker.html">Monkey Clicker</a>: Can a monkey write Hamlet? Type Shakespeare, hire monkeys to type for you and grow to a whole Monkey City.</li><li><a href="totalizator.html">Totalizator</a>: How many accountants does it take to beat a gorilla? The bettors only see the numbers, so fight when they bet against you and win big.</li><li><a href="ogonek.html">Ogonek</a>: A burner festival on a Bali mountain, and you have a flamethrower. Burning dancers spread the fire: burn every camp down, beat the DJ, then leave no trace.</li></ul></section>
-</main>
-<footer><div class="wrap">Made by Mad Gever (<a href="https://gevernus.github.io/">Artem Povaliaev</a>) with friends and a lot of AI agents. Anonymous visit stats, no cookies.</div></footer>
+  <div class="hero panel">
+    <div>
+      <div class="stage"><video id="stage-video" controls preload="metadata" playsinline poster="covers/stardust.webp" src="media/stardust/trailer.mp4" aria-label="Cosmic Roguelike trailer"></video><img id="stage-img" hidden alt=""></div>
+      <div class="strip" id="strip"><a href="media/stardust/trailer.mp4" data-kind="video" data-label="Cosmic Roguelike trailer" class="on"><img src="covers/stardust.webp" loading="lazy" alt="Cosmic Roguelike trailer"><span class="vid"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9.5-5.5z"/></svg></span></a><a href="media/stardust/1.webp" data-kind="img" data-label="Cosmic Roguelike screenshot 1"><img src="media/stardust/1-thumb.webp" loading="lazy" alt="Cosmic Roguelike screenshot 1"></a><a href="media/stardust/2.webp" data-kind="img" data-label="Cosmic Roguelike screenshot 2"><img src="media/stardust/2-thumb.webp" loading="lazy" alt="Cosmic Roguelike screenshot 2"></a><a href="media/stardust/3.webp" data-kind="img" data-label="Cosmic Roguelike screenshot 3"><img src="media/stardust/3-thumb.webp" loading="lazy" alt="Cosmic Roguelike screenshot 3"></a><a href="media/stardust/4.webp" data-kind="img" data-label="Cosmic Roguelike screenshot 4"><img src="media/stardust/4-thumb.webp" loading="lazy" alt="Cosmic Roguelike screenshot 4"></a><a href="media/stardust/5.webp" data-kind="img" data-label="Cosmic Roguelike screenshot 5"><img src="media/stardust/5-thumb.webp" loading="lazy" alt="Cosmic Roguelike screenshot 5"></a><a href="media/stardust/6.webp" data-kind="img" data-label="Cosmic Roguelike screenshot 6"><img src="media/stardust/6-thumb.webp" loading="lazy" alt="Cosmic Roguelike screenshot 6"></a></div>
+    </div>
+    <aside class="side">
+      <img class="capsule" src="covers/stardust.webp" width="960" height="540" alt="Cosmic Roguelike cover">
+      <p class="short">A space roguelike: every life is a star&#39;s life, from a speck of dust to its collapse. Upgrade between lives and grow far enough to become a black hole.</p>
+      <dl class="facts">
+        <dt>Released</dt><dd>28 Oct 2026</dd>
+        <dt>Developer</dt><dd>Mad Gever (Artem)</dd>
+        <dt>Price</dt><dd>Free, in the browser</dd>
+        <dt>Status</dt><dd>Play free</dd>
+      </dl>
+      <div class="tags"><span class="tag">Roguelike</span><span class="tag">Space</span><span class="tag">Upgrades</span><span class="tag">Arcade</span><span class="tag">Singleplayer</span><span class="tag">Atmospheric</span></div>
+    </aside>
+  </div>
+  <div class="buy panel">
+    <h2>Play Cosmic Roguelike<span class="plat"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm4.9 6h-2.1a11 11 0 0 0-.9-3.9A5.5 5.5 0 0 1 12.9 7zM8 2.6c.6.8 1.2 2.4 1.3 4.4H6.7C6.8 5 7.4 3.4 8 2.6zM6.1 3.1A11 11 0 0 0 5.2 7H3.1a5.5 5.5 0 0 1 3-3.9zM3.1 8.5h2.1c.1 1.5.4 2.8.9 3.9a5.5 5.5 0 0 1-3-3.9zm4.9 4.9c-.6-.8-1.2-2.4-1.3-4.4h2.6c-.1 2-.7 3.6-1.3 4.4zm1.9-.5c.5-1.1.8-2.4.9-3.9h2.1a5.5 5.5 0 0 1-3 3.9z"/></svg> Runs in the browser · no download, no sign-up</span></h2>
+    <div class="price"><span class="free">FREE</span><a class="play" href="play.html?g=stardust"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9.5-5.5z"/></svg>Play now</a></div>
+  </div>
+  <div class="cols">
+    <div class="main-col">
+      <section><h2>About this game</h2><p>A roguelike about the life of a star. Each life starts as a speck of dust right after the Big Bang and ends when your hydrogen runs out; between lives you spend the stardust you earned on upgrades that last. Move, and everything smaller than you falls in.</p><p>Grow into a nebula, a protostar, a star, a blue giant and a hypergiant. Your hydrogen burns from the first second. When it runs out you collapse, and your mass and form decide what you leave: a cold cloud, a white dwarf, a pulsar, a magnetar or a black hole.</p><p>Stars much bigger than you pull you in and tear matter off you. Touch one and the life is over. A star a little bigger than you is prey: drink from it, but keep off the red line round it. Two stars of a size merge.</p><p>Become a black hole: everything around you is swallowed, a moment of silence, then the stars fall into you on the beat of the music.</p></section>
+      <section><h2>Controls</h2><ul><li>Click or press any key to set off the Big Bang.</li><li>Move the mouse: your star follows the cursor. WASD or the arrow keys also steer.</li><li>When you transform, click a form or press 1, 2 or 3.</li><li>Esc or P: pause.</li><li>On a phone: touch and hold where you want to go, tap a form when you transform.</li></ul></section>
+      <section><h2>Made for a challenge</h2><p>Cosmic Roguelike is game 1 of <a href="./">25 Games by New Year</a>: Mad Gever makes 25 small web games with AI coding agents (Claude Code) from October 19 to December 31, 2026.</p><ul><li><a href="https://ldjam.com/events/ludum-dare/60/stardust" rel="noopener">Ludum Dare 60 jam version ↗</a></li></ul></section>
+    </div>
+    <div>
+      <div class="box panel"><h3>System requirements</h3><p>A modern browser: Chrome, Safari, Firefox or Edge. Nothing to install.</p></div>
+      <div class="box panel"><h3>More from Mad Gever</h3><div class="more"><a href="monkey-clicker.html"><img src="covers/monkey-clicker.webp" loading="lazy" alt=""><span><b>Monkey Clicker</b>Can a monkey write Hamlet?</span></a><a href="totalizator.html"><img src="covers/totalizator.webp" loading="lazy" alt=""><span><b>Totalizator</b>How many accountants does it take to beat a gorilla?</span></a><a href="ogonek.html"><img src="covers/ogonek.webp" loading="lazy" alt=""><span><b>Ogonek</b>A burner festival on a Bali mountain, and you have a flamethrower.</span></a></div></div>
+    </div>
+  </div>
+  <footer>Made by Mad Gever (<a href="https://gevernus.github.io/">Artem Povaliaev</a>) with friends and a lot of AI agents. Anonymous visit stats, no cookies.</footer>
+</div>
 <script src="analytics.js"></script>
 <script>
   (() => {
+    // the viewer: a thumbnail puts its trailer or screenshot on the stage
+    const strip = document.getElementById('strip');
+    const v = document.getElementById('stage-video'), im = document.getElementById('stage-img');
+    if (strip && v && im) strip.addEventListener('click', (e) => {
+      const a = e.target.closest('a'); if (!a) return;
+      e.preventDefault();
+      strip.querySelectorAll('a').forEach((x) => x.classList.toggle('on', x === a));
+      if (a.dataset.kind === 'video') { im.hidden = true; v.hidden = false; if (v.getAttribute('src') !== a.getAttribute('href')) v.src = a.getAttribute('href'); }
+      else { v.pause(); v.hidden = true; im.hidden = false; im.src = a.getAttribute('href'); im.alt = a.dataset.label; }
+    });
     const S = window.siteStats;
     if (!S) return;
     S.track('site_view', { slug: "stardust" });

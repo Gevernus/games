@@ -12,6 +12,14 @@ window.GAMES = [
     "title": "Cosmic Roguelike",
     "page": "cosmic-roguelike",
     "pitch": "A space roguelike: every life is a star's life, from a speck of dust to its collapse. Upgrade between lives and grow far enough to become a black hole.",
+    "tags": [
+      "Roguelike",
+      "Space",
+      "Upgrades",
+      "Arcade",
+      "Singleplayer",
+      "Atmospheric"
+    ],
     "about": [
       "A roguelike about the life of a star. Each life starts as a speck of dust right after the Big Bang and ends when your hydrogen runs out; between lives you spend the stardust you earned on upgrades that last. Move, and everything smaller than you falls in.",
       "Grow into a nebula, a protostar, a star, a blue giant and a hypergiant. Your hydrogen burns from the first second. When it runs out you collapse, and your mass and form decide what you leave: a cold cloud, a white dwarf, a pulsar, a magnetar or a black hole.",
@@ -55,6 +63,14 @@ window.GAMES = [
     "title": "Monkey Clicker",
     "page": "monkey-clicker",
     "pitch": "Can a monkey write Hamlet? Type Shakespeare, hire monkeys to type for you and grow to a whole Monkey City.",
+    "tags": [
+      "Clicker",
+      "Idle",
+      "Incremental",
+      "Funny",
+      "Shakespeare",
+      "Singleplayer"
+    ],
     "about": [
       "Can a monkey write Hamlet? Hire enough of them and find out. Click to type Shakespeare's epitaph, sell the page and hire your first monkey. It types for you. Every word you type earns money.",
       "Then add desks, overseers, office floors, towers and a whole Monkey City. Every page is real Shakespeare: the Sonnets, Hamlet, Macbeth and every other play.",
@@ -88,6 +104,13 @@ window.GAMES = [
     "title": "Totalizator",
     "page": "totalizator",
     "pitch": "How many accountants does it take to beat a gorilla? The bettors only see the numbers, so fight when they bet against you and win big.",
+    "tags": [
+      "Betting",
+      "Simulation",
+      "Strategy",
+      "Funny",
+      "Singleplayer"
+    ],
     "author": "Artem with Igor",
     "status": "live",
     "statusText": "Play free",
@@ -112,6 +135,14 @@ window.GAMES = [
     "title": "Ogonek",
     "page": "ogonek",
     "pitch": "A burner festival on a Bali mountain, and you have a flamethrower. Burning dancers spread the fire: burn every camp down, beat the DJ, then leave no trace.",
+    "tags": [
+      "Action",
+      "Shooter",
+      "Retro",
+      "Pixel Graphics",
+      "Neon",
+      "Singleplayer"
+    ],
     "controls": [
       "WASD to move, aim with the mouse, hold the mouse button to fire.",
       "Hold E at the generator to refuel. R restarts, Esc goes back to the site.",
