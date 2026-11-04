@@ -396,7 +396,10 @@
     h.append(el('span', 'rule'));
     return h;
   };
-  const playUrl = (g) => `play.html?g=${encodeURIComponent(g.slug)}`;
+  const playUrl = (g) => {
+    const u = `play.html?g=${encodeURIComponent(g.slug)}`;
+    return window.siteStats ? window.siteStats.carry(u) : u;
+  };
 
   games.forEach((g, i) => {
     const lvl = i + 1;

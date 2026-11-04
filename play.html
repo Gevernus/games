@@ -76,7 +76,8 @@
   } else {
     title.textContent = game.title;
     // back to the floor this game lives on
-    document.getElementById('back').href = `./#level-${window.GAMES.indexOf(game) + 1}`;
+    const backUrl = `./#level-${window.GAMES.indexOf(game) + 1}`;
+    document.getElementById('back').href = window.siteStats ? window.siteStats.carry(backUrl) : backUrl;
     document.title = `${game.title} · 25 Games by New Year`;
     const frame = document.createElement('iframe');
     frame.title = game.title;
