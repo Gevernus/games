@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>25 Games by New Year</title>
-<meta name="description" content="A challenge: 25 small web games from October 19 to December 31, 2026, built with AI agents. Ride down the shaft, every game is a level, play it right here.">
+<title>25 Games by New Year · Mad Gever</title>
+<meta name="description" content="Mad Gever's challenge: 25 small web games from October 19 to December 31, 2026, built with AI agents. Ride down the shaft, every game is a level, play it right here.">
 <meta name="theme-color" content="#08061a">
 <meta property="og:title" content="25 Games by New Year">
 <meta property="og:description" content="25 small web games from October 19 to December 31, 2026. Ride down the shaft and play them all right here.">
@@ -331,7 +331,7 @@
     <div class="hero-inner">
       <p class="kicker">19.10 → 31.12.2026<span class="sep"> · </span><span class="by">BUILT WITH AI AGENTS</span></p>
       <h1><span class="n">25</span> GAMES<span class="sub">BY NEW YEAR</span></h1>
-      <p class="lead">One small web game after another, from October 19 until December 31. Every game is a level down the shaft. Ride down and play each one right here.</p>
+      <p class="lead">One small web game after another by Mad Gever, from October 19 until December 31. Every game is a level down the shaft. Ride down and play each one right here.</p>
       <a class="call" href="#level-1"><span class="btn" aria-hidden="true"></span><span>GOING DOWN<small>LEVEL 1 IS WAITING</small></span></a>
     </div>
   </section>
@@ -351,7 +351,7 @@
 </div>
 
 <main class="shaft" id="shaft">
-  <div class="shaft-inner" id="floors"></div>
+  <div class="shaft-inner" id="floors"><section class="static-games"><h2>The games so far</h2><ul><li><h3><a href="cosmic-roguelike.html">Cosmic Roguelike</a></h3><p>Game 1 of 25 · by Mad Gever (Artem) · Play free</p><p>A space roguelike: every life is a star&#39;s life, from a speck of dust to its collapse. Upgrade between lives and grow far enough to become a black hole.</p><p><a href="play.html?g=stardust">Play Cosmic Roguelike free in the browser</a></p></li><li><h3><a href="monkey-clicker.html">Monkey Clicker</a></h3><p>Game 2 of 25 · by Mad Gever (Artem) · Play free</p><p>Can a monkey write Hamlet? Type Shakespeare, hire monkeys to type for you and grow to a whole Monkey City.</p><p><a href="play.html?g=monkey-clicker">Play Monkey Clicker free in the browser</a></p></li><li><h3><a href="totalizator.html">Totalizator</a></h3><p>Game 3 of 25 · by Mad Gever (Artem with Igor) · Play free</p><p>How many accountants does it take to beat a gorilla? The bettors only see the numbers, so fight when they bet against you and win big.</p><p><a href="play.html?g=totalizator">Play Totalizator free in the browser</a></p></li><li><h3><a href="ogonek.html">Ogonek</a></h3><p>Game 4 of 25 · by Mad Gever (Artem) · Fresh build</p><p>A burner festival on a Bali mountain, and you have a flamethrower. Burning dancers spread the fire: burn every camp down, beat the DJ, then leave no trace.</p><p><a href="play.html?g=ogonek">Play Ogonek free in the browser</a></p></li></ul><p>Made by Mad Gever (Artem Povaliaev) with friends and a lot of AI agents.</p></section></div>
 </main>
 
 <nav class="gauge away" id="gauge" aria-label="Depth and floors">
@@ -417,6 +417,7 @@
 
   // ---------- the floors ----------
   const floorsEl = $('floors');
+  floorsEl.textContent = ''; // publish.mjs puts a plain list of the games here for readers without JavaScript (search and AI crawlers)
   const stops = []; // { id, level, kind, title }
   const head = (lvl, extra) => {
     const h = el('div', 'floor-head');
@@ -640,6 +641,7 @@
       });
       actions.append(a);
     }
+    if (g.page) { const a = el('a', 'more', 'About the game'); a.href = window.siteStats ? window.siteStats.carry(`${g.page}.html`) : `${g.page}.html`; actions.append(a); }
     (g.links || []).forEach((l) => { const a = el('a', 'more', `${l.label} ↗`); a.href = l.url; a.target = '_blank'; a.rel = 'noopener'; actions.append(a); });
     body.append(actions);
     if (gal) card.append(gal);
@@ -684,7 +686,7 @@
   floorsEl.append(bottom);
   stops.push({ id: bottom.id, level: GOAL, kind: 'bot', title: 'The bottom' });
   const foot = el('footer');
-  foot.innerHTML = '<span>Made by <a href="https://gevernus.github.io/">Artem Povaliaev</a> with friends and a lot of AI agents. Anonymous visit stats, no cookies.</span><span class="pix">SEE YOU AT THE BOTTOM</span>';
+  foot.innerHTML = '<span>Made by Mad Gever (<a href="https://gevernus.github.io/">Artem Povaliaev</a>) with friends and a lot of AI agents. Anonymous visit stats, no cookies.</span><span class="pix">SEE YOU AT THE BOTTOM</span>';
   floorsEl.append(foot);
 
   // ---------- floors arrive and light up as the cabin reaches them ----------

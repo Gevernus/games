@@ -41,7 +41,7 @@
   };
   const every = {
     game: 'site',
-    page: location.pathname.endsWith('play.html') ? 'play' : 'landing',
+    page: document.documentElement.dataset.page || (location.pathname.endsWith('play.html') ? 'play' : 'landing'), // a game's own page says data-page="game"
     referrer_host: ref || 'direct',
     utm_source: q.get('utm_source') || undefined,
     utm_medium: q.get('utm_medium') || undefined,
