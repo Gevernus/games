@@ -40,6 +40,7 @@ window.GAMES = [
     "cover": "covers/stardust.webp",
     "trailer": {
       "src": "media/stardust/trailer.mp4",
+      "poster": "media/stardust/poster.webp",
       "sound": true
     },
     "shots": [
@@ -88,6 +89,7 @@ window.GAMES = [
     "cover": "covers/monkey-clicker.webp",
     "trailer": {
       "src": "media/monkey-clicker/trailer.mp4",
+      "poster": "media/monkey-clicker/poster.webp",
       "sound": true
     },
     "shots": [
@@ -118,6 +120,7 @@ window.GAMES = [
     "cover": "covers/totalizator.webp",
     "trailer": {
       "src": "media/totalizator/trailer.mp4",
+      "poster": "media/totalizator/poster.webp",
       "sound": true
     },
     "shots": [
@@ -155,6 +158,7 @@ window.GAMES = [
     "cover": "covers/ogonek.webp",
     "trailer": {
       "src": "media/ogonek/trailer.mp4",
+      "poster": "media/ogonek/poster.webp",
       "sound": true
     },
     "shots": [

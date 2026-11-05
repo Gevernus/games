@@ -54,12 +54,12 @@
   .buy h2 { flex: 1; font: 400 clamp(17px, 2.4vw, 22px)/1.25 var(--sub); letter-spacing: 0.01em; }
   .buy .plat { display: flex; gap: 8px; align-items: center; color: var(--muted); font-size: 12px; margin-top: 4px; font-family: var(--body); }
   .buy .plat svg { width: 14px; fill: currentColor; }
-  .price { display: flex; align-items: stretch; border-radius: 4px; overflow: hidden; background: rgba(0, 0, 0, 0.35); flex: none; }
-  .price .free { display: grid; place-items: center; padding: 0 14px; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; color: var(--accent2); }
-  .play { display: inline-flex; align-items: center; gap: 10px; padding: 13px 26px 13px 22px; font: 700 15px/1 var(--body); letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
-    color: #1a0612; background: linear-gradient(180deg, #ffb347, #ff3dbb); box-shadow: inset 0 1px 0 rgba(255,255,255,0.55), inset 0 -2px 0 rgba(0,0,0,0.18); transition: filter 0.15s, box-shadow 0.15s; }
-  .play svg { width: 13px; fill: currentColor; }
-  .play:hover { filter: brightness(1.08); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 0 24px #ff3dbbaa; }
+  .price { display: flex; align-items: center; gap: 20px; flex: none; }
+  .price .free { font: 600 12px/1 var(--body); letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  .play { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; white-space: nowrap; transition: background 0.15s, color 0.15s, box-shadow 0.15s, transform 0.1s, border-color 0.15s, text-shadow 0.15s;
+    font: 400 24px/1 'Permanent Marker', cursive; color: #fff; padding: 12px 34px 10px; border-radius: 8px; background: rgba(255,61,187,0.08); border: 2px solid #ff3dbb; text-shadow: 0 0 6px #ff3dbb, 0 0 18px #ff3dbb; box-shadow: 0 0 12px rgba(255,61,187,0.7), inset 0 0 12px rgba(255,61,187,0.45); }
+  .play:hover, .play:focus-visible { border-color: #2ef2ff; text-shadow: 0 0 6px #2ef2ff, 0 0 18px #2ef2ff; box-shadow: 0 0 16px rgba(46,242,255,0.8), inset 0 0 14px rgba(46,242,255,0.45); }
+  
   .cols { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: 22px; margin: 30px 0 40px; align-items: start; }
   .cols > div { display: grid; gap: 26px; }
   section h2, .box h3 { font: 400 13px/1 var(--body); text-transform: uppercase; letter-spacing: 0.12em; color: var(--text); padding-bottom: 8px; margin-bottom: 12px;
@@ -91,8 +91,8 @@
   <h1>Ogonek</h1>
   <div class="hero panel">
     <div>
-      <div class="stage"><video id="stage-video" controls preload="metadata" playsinline poster="covers/ogonek.webp" src="media/ogonek/trailer.mp4" aria-label="Ogonek trailer"></video><img id="stage-img" hidden alt=""></div>
-      <div class="strip" id="strip"><a href="media/ogonek/trailer.mp4" data-kind="video" data-label="Ogonek trailer" class="on"><img src="covers/ogonek.webp" loading="lazy" alt="Ogonek trailer"><span class="vid"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9.5-5.5z"/></svg></span></a><a href="media/ogonek/1.webp" data-kind="img" data-label="Ogonek screenshot 1"><img src="media/ogonek/1-thumb.webp" loading="lazy" alt="Ogonek screenshot 1"></a><a href="media/ogonek/2.webp" data-kind="img" data-label="Ogonek screenshot 2"><img src="media/ogonek/2-thumb.webp" loading="lazy" alt="Ogonek screenshot 2"></a><a href="media/ogonek/3.webp" data-kind="img" data-label="Ogonek screenshot 3"><img src="media/ogonek/3-thumb.webp" loading="lazy" alt="Ogonek screenshot 3"></a><a href="media/ogonek/4.webp" data-kind="img" data-label="Ogonek screenshot 4"><img src="media/ogonek/4-thumb.webp" loading="lazy" alt="Ogonek screenshot 4"></a><a href="media/ogonek/5.webp" data-kind="img" data-label="Ogonek screenshot 5"><img src="media/ogonek/5-thumb.webp" loading="lazy" alt="Ogonek screenshot 5"></a></div>
+      <div class="stage"><video id="stage-video" controls preload="metadata" playsinline poster="media/ogonek/poster.webp" src="media/ogonek/trailer.mp4" aria-label="Ogonek trailer"></video><img id="stage-img" hidden alt=""></div>
+      <div class="strip" id="strip"><a href="media/ogonek/trailer.mp4" data-kind="video" data-label="Ogonek trailer" class="on"><img src="media/ogonek/poster-thumb.webp" loading="lazy" alt="Ogonek trailer"><span class="vid"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9.5-5.5z"/></svg></span></a><a href="media/ogonek/1.webp" data-kind="img" data-label="Ogonek screenshot 1"><img src="media/ogonek/1-thumb.webp" loading="lazy" alt="Ogonek screenshot 1"></a><a href="media/ogonek/2.webp" data-kind="img" data-label="Ogonek screenshot 2"><img src="media/ogonek/2-thumb.webp" loading="lazy" alt="Ogonek screenshot 2"></a><a href="media/ogonek/3.webp" data-kind="img" data-label="Ogonek screenshot 3"><img src="media/ogonek/3-thumb.webp" loading="lazy" alt="Ogonek screenshot 3"></a><a href="media/ogonek/4.webp" data-kind="img" data-label="Ogonek screenshot 4"><img src="media/ogonek/4-thumb.webp" loading="lazy" alt="Ogonek screenshot 4"></a><a href="media/ogonek/5.webp" data-kind="img" data-label="Ogonek screenshot 5"><img src="media/ogonek/5-thumb.webp" loading="lazy" alt="Ogonek screenshot 5"></a></div>
     </div>
     <aside class="side">
       <img class="capsule" src="covers/ogonek.webp" width="960" height="540" alt="Ogonek cover">
@@ -108,7 +108,7 @@
   </div>
   <div class="buy panel">
     <h2>Play Ogonek<span class="plat"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm4.9 6h-2.1a11 11 0 0 0-.9-3.9A5.5 5.5 0 0 1 12.9 7zM8 2.6c.6.8 1.2 2.4 1.3 4.4H6.7C6.8 5 7.4 3.4 8 2.6zM6.1 3.1A11 11 0 0 0 5.2 7H3.1a5.5 5.5 0 0 1 3-3.9zM3.1 8.5h2.1c.1 1.5.4 2.8.9 3.9a5.5 5.5 0 0 1-3-3.9zm4.9 4.9c-.6-.8-1.2-2.4-1.3-4.4h2.6c-.1 2-.7 3.6-1.3 4.4zm1.9-.5c.5-1.1.8-2.4.9-3.9h2.1a5.5 5.5 0 0 1-3 3.9z"/></svg> Runs in the browser · no download, no sign-up</span></h2>
-    <div class="price"><span class="free">FREE</span><a class="play" href="play.html?g=ogonek"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9.5-5.5z"/></svg>Play now</a></div>
+    <div class="price"><span class="free">Free</span><a class="play" href="play.html?g=ogonek">Play now</a></div>
   </div>
   <div class="cols">
     <div class="main-col">
