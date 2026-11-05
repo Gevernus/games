@@ -207,6 +207,12 @@ window.GAMES = [
     "statusText": "Play free",
     "date": "2026-11-05",
     "cover": "covers/kites.webp",
+    "trailer": {
+      "src": "media/kites/trailer.mp4",
+      "poster": "media/kites/poster.webp",
+      "loops": [0.2, 3.12, 6.04, 8.96, 11.88, 14.8],
+      "sound": true
+    },
     "shots": [
       "media/kites/1.webp",
       "media/kites/2.webp",
