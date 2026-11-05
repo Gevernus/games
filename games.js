@@ -2,7 +2,9 @@
 // slug: the game's folder under play/; status: live | review | soon | dev | jam (soon: waiting to be submitted); cover: a 16:9 WebP in covers/;
 // play: where the game's static build is served (play/<slug>/), publish.mjs copies the build there;
 // links: secondary links shown small under the Play button. A game without play is listed but not playable yet.
-// trailer: { src, sound } (sound: the file has an audio track); shots: screenshots, each with a <name>-thumb.webp beside it.
+// trailer: { src, poster, loops, sound } (poster: a frame of the trailer; loops: the second of the trailer each silent clip
+// media/<slug>/loop-<n>.mp4 starts at, for the wall on the landing; sound: the file has an audio track);
+// shots: screenshots, each with a <name>-thumb.webp beside it.
 // Both come from tools/site-media.sh; a game without them shows its cover.
 // page: the game's own page, <page>.html, made by publish.mjs (plain HTML that search engines and AI crawlers can read without
 // running JavaScript); about: paragraphs for that page, controls: lines for it. Only true things, as in the game's store texts.
@@ -41,6 +43,7 @@ window.GAMES = [
     "trailer": {
       "src": "media/stardust/trailer.mp4",
       "poster": "media/stardust/poster.webp",
+      "loops": [0.2, 4.2, 7.7, 11.7, 15.2, 19.7, 24.7],
       "sound": true
     },
     "shots": [
@@ -90,6 +93,7 @@ window.GAMES = [
     "trailer": {
       "src": "media/monkey-clicker/trailer.mp4",
       "poster": "media/monkey-clicker/poster.webp",
+      "loops": [0.2, 4.7, 7.7, 11.7, 15.7, 18.7, 22.7],
       "sound": true
     },
     "shots": [
@@ -121,6 +125,7 @@ window.GAMES = [
     "trailer": {
       "src": "media/totalizator/trailer.mp4",
       "poster": "media/totalizator/poster.webp",
+      "loops": [0.2, 6.2, 10.7, 13.7, 16.7, 21.7],
       "sound": true
     },
     "shots": [
@@ -159,6 +164,7 @@ window.GAMES = [
     "trailer": {
       "src": "media/ogonek/trailer.mp4",
       "poster": "media/ogonek/poster.webp",
+      "loops": [0.2, 3.2, 10.2, 12.7, 17.2, 19.7],
       "sound": true
     },
     "shots": [

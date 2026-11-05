@@ -47,7 +47,7 @@
 </head>
 <body>
 <header class="bar">
-  <a class="btn" id="back" href="./#level-1" aria-label="All games"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 2h2v2h-2zM8 4h2v2H8zM6 6h2v4H6zM8 10h2v2H8zM10 12h2v2h-2z"/></svg><span>ALL GAMES</span></a>
+  <a class="btn" id="back" href="./" aria-label="All games"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 2h2v2h-2zM8 4h2v2H8zM6 6h2v4H6zM8 10h2v2H8zM10 12h2v2h-2z"/></svg><span>ALL GAMES</span></a>
   <img class="brand" src="art/logo.webp" width="26" height="26" alt="">
   <h1 id="title">Loading</h1>
   <button class="btn fs" id="fs" type="button" aria-label="Fullscreen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 1h5v2H3v3H1zM10 1h5v5h-2V3h-3zM1 10h2v3h3v2H1zM13 10h2v5h-5v-2h3z"/></svg><span>FULLSCREEN</span></button>
@@ -76,13 +76,13 @@
     stage.append(m);
   } else {
     title.textContent = game.title;
-    // back to the floor this game lives on
-    const backUrl = `./#level-${window.GAMES.indexOf(game) + 1}`;
-    document.getElementById('back').href = window.siteStats ? window.siteStats.carry(backUrl) : backUrl;
-    // opened over the landing (index.html): back closes that overlay, the page below stays where it was
-    let overLanding = false;
-    try { overLanding = parent !== window && parent.location.origin === location.origin; } catch {}
-    if (overLanding) document.getElementById('back').addEventListener('click', (e) => { e.preventDefault(); parent.postMessage({ type: 'close-game' }, location.origin); });
+    // back to the wall of games; when the visitor came from the site, going back restores the place they scrolled to
+    const backUrl = './';
+    const back = document.getElementById('back');
+    back.href = window.siteStats ? window.siteStats.carry(backUrl) : backUrl;
+    let fromSite = false;
+    try { fromSite = new URL(document.referrer).origin === location.origin && history.length > 1; } catch {}
+    if (fromSite) back.addEventListener('click', (e) => { e.preventDefault(); history.back(); });
     document.title = `${game.title} · 25 Games by New Year`;
     const frame = document.createElement('iframe');
     frame.title = game.title;
