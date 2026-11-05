@@ -35,6 +35,7 @@
   .hero { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: 14px; padding: 14px; }
   .stage { position: relative; aspect-ratio: 16 / 9; background: #000; border-radius: 3px; overflow: hidden; }
   .stage video, .stage img { width: 100%; height: 100%; object-fit: contain; display: block; background: #000; }
+  .stage [hidden] { display: none; } /* a game with no trailer: its first screenshot, not an empty player */
   .strip { display: flex; gap: 6px; margin-top: 8px; overflow-x: auto; scrollbar-width: thin; padding-bottom: 4px; }
   .strip a { position: relative; flex: none; width: 116px; aspect-ratio: 16 / 9; border-radius: 2px; overflow: hidden; outline: 2px solid transparent; opacity: 0.6; transition: opacity 0.15s, outline-color 0.15s; }
   .strip a:hover { opacity: 0.9; } .strip a.on { opacity: 1; outline-color: var(--accent); }
@@ -118,7 +119,7 @@
     </div>
     <div>
       <div class="box panel"><h3>System requirements</h3><p>A modern browser: Chrome, Safari, Firefox or Edge. Nothing to install.</p></div>
-      <div class="box panel"><h3>More from Mad Gever</h3><div class="more"><a href="cosmic-roguelike.html"><img src="covers/stardust.webp" loading="lazy" alt=""><span><b>Cosmic Roguelike</b>A space roguelike: every life is a star&#39;s life, from a speck of dust to its collapse.</span></a><a href="totalizator.html"><img src="covers/totalizator.webp" loading="lazy" alt=""><span><b>Totalizator</b>How many accountants does it take to beat a gorilla?</span></a><a href="ogonek.html"><img src="covers/ogonek.webp" loading="lazy" alt=""><span><b>Ogonek</b>A burner festival on a Bali mountain, and you have a flamethrower.</span></a></div></div>
+      <div class="box panel"><h3>More from Mad Gever</h3><div class="more"><a href="cosmic-roguelike.html"><img src="covers/stardust.webp" loading="lazy" alt=""><span><b>Cosmic Roguelike</b>A space roguelike: every life is a star&#39;s life, from a speck of dust to its collapse.</span></a><a href="totalizator.html"><img src="covers/totalizator.webp" loading="lazy" alt=""><span><b>Totalizator</b>How many accountants does it take to beat a gorilla?</span></a><a href="ogonek.html"><img src="covers/ogonek.webp" loading="lazy" alt=""><span><b>Ogonek</b>A burner festival on a Bali mountain, and you have a flamethrower.</span></a><a href="kites.html"><img src="covers/kites.webp" loading="lazy" alt=""><span><b>Kites</b>Fly your kite over a Balinese village and cut the strings of the kites weaker than you.</span></a></div></div>
     </div>
   </div>
   <footer>Made by Mad Gever (<a href="https://gevernus.github.io/">Artem Povaliaev</a>) with friends and a lot of AI agents. Anonymous visit stats, no cookies.</footer>

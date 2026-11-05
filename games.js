@@ -176,5 +176,47 @@ window.GAMES = [
     ],
     "play": "play/ogonek/",
     "links": []
+  },
+  {
+    "slug": "kites",
+    "title": "Kites",
+    "page": "kites",
+    "pitch": "Fly your kite over a Balinese village and cut the strings of the kites weaker than you. Dodge the stronger ones, climb past the clouds to the stars, and catch all fifteen kites.",
+    "tags": [
+      "Casual",
+      "Arcade",
+      "Upgrades",
+      "Collection",
+      "Singleplayer",
+      "Relaxing"
+    ],
+    "about": [
+      "A kite fight over a Balinese village. Your kite climbs by itself; you steer it. The number on every kite is its strength: fly into a green one, weaker than you, and you cut its string and take it. A red one is stronger: touch it and your own string snaps.",
+      "Every kite you cut gives experience; a level up makes your kite stronger and bigger. Catch an updraft for a boost and overtake the kites around you.",
+      "Climb above the antennas, the birds, the clouds, the rain and the volcano, into the thin air and up among the stars. The higher you fly, the more kites there are, and up there some of the stronger ones hunt you.",
+      "Between flights, spend your coins in the workshop: Strength, Climb, Manoeuvre and a Second chance. The album collects all fifteen kites, from paper diamonds to the Golden Naga and the giant Banjar kite; the rarest you caught flies for you, and a full set of a rarity pays a reward."
+    ],
+    "controls": [
+      "Click the sky to fly.",
+      "Move the mouse: your kite follows it.",
+      "Between flights: click the workshop to upgrade, the album to see your collection.",
+      "On a phone: your kite follows your finger; tap the sky to fly."
+    ],
+    "author": "Artem",
+    "status": "live",
+    "statusText": "Play free",
+    "date": "2026-11-05",
+    "cover": "covers/kites.webp",
+    "shots": [
+      "media/kites/1.webp",
+      "media/kites/2.webp",
+      "media/kites/3.webp",
+      "media/kites/4.webp",
+      "media/kites/5.webp",
+      "media/kites/6.webp",
+      "media/kites/7.webp"
+    ],
+    "play": "play/kites/",
+    "links": []
   }
 ];

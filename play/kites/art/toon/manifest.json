@@ -1,0 +1,96 @@
+{
+  "name": "toon",
+  "sky": [
+    [
+      "#2585f5",
+      "#fda85a"
+    ],
+    [
+      "#3092f8",
+      "#b19c90"
+    ],
+    [
+      "#3a9efa",
+      "#afafa4"
+    ],
+    [
+      "#47a0e5",
+      "#72b5de"
+    ],
+    [
+      "#1e4292",
+      "#ae7556"
+    ],
+    [
+      "#1a1650",
+      "#1d3279"
+    ]
+  ],
+  "layers": {
+    "far": "far.webp",
+    "mid": "mid.webp",
+    "street": "street.webp",
+    "plume": "plume.webp"
+  },
+  "houses": {
+    "bungalow": "bungalow.webp",
+    "workshop": "workshop.webp",
+    "boy": "boy.webp",
+    "boyRun": "boy-run.webp",
+    "workshopLit": "workshop-lit.webp",
+    "bungalowLit": "bungalow-lit.webp",
+    "row": "row.webp"
+  },
+  "deco": {
+    "palms": "palms.webp",
+    "clouds": "clouds.webp",
+    "birds": "birds.webp",
+    "minaret": "minaret.webp",
+    "volcano": "volcano.webp",
+    "moon": "moon.webp",
+    "boat": "boat.webp",
+    "boat2": "boat2.webp"
+  },
+  "kites": {
+    "player": [
+      "k-player-1.webp",
+      "k-player-2.webp",
+      "k-player-3.webp"
+    ],
+    "common": [
+      "k-common-1.webp",
+      "k-common-2.webp",
+      "k-common-3.webp",
+      "k-common-4.webp",
+      "k-common-5.webp"
+    ],
+    "rare": [
+      "k-rare-1.webp",
+      "k-rare-2.webp",
+      "k-rare-3.webp"
+    ],
+    "epic": [
+      "k-epic-1.webp",
+      "k-epic-2.webp",
+      "k-epic-3.webp"
+    ],
+    "legendary": [
+      "k-legendary-1.webp",
+      "k-legendary-2.webp",
+      "k-legendary-3.webp"
+    ],
+    "banjar": "k-banjar.webp",
+    "bebean": "k-bebean.webp"
+  },
+  "logo": "logo.webp",
+  "ui": {
+    "font": "Grandstander",
+    "accent": "#ffcc1f"
+  },
+  "signs": {
+    "plank": "sign-plank.webp",
+    "panel": "ui-panel.webp",
+    "coin": "ui-coin.webp",
+    "button": "ui-button.webp"
+  }
+}
